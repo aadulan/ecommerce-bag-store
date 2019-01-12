@@ -1,0 +1,50 @@
+{% load static nav_links %}
+
+<nav class="navbar navbar-expand-md navbar-light bg-light my-nav navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand -->
+        <a class="navbar-brand my-auto" href="/">
+            <h2 class="m-0">Backpacks TT</h2>
+        </a>
+
+
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav ml-auto text-center" id="menu2">
+                {% get_nav_links as nav %}
+{#                {% get_sub_links as sub %}#}
+                {% for u, n in nav %}
+{#                    {%  if n == 'Jansport' %}#}
+{#                    <li class="nav-item my-auto">#}
+{#                        <a class="nav-link" href="{{ u }}"><h5>{{ n }}</h5></a>#}
+{#                    </li>#}
+{#                        {% for a, b in sub %}#}
+{#                          <a class="nav-link" href="{{ a }}"><h5>{{ b }}</h5></a>#}
+{#                        {% endfor %}#}
+{#                    {% else %}#}
+                    <li class="nav-item my-auto {% if u == request.path|cut:"/" %} active {% endif %}">
+                        <a class="nav-link" href="/{{ u }}"><h5>{{ n }}</h5></a>
+                    </li>
+{#                    {% endif %}#}
+
+                {% endfor %}
+                <!-- FACEBOOK ICON -->
+                <li class="nav-item m-auto d-flex">
+                    <a class="nav-link my-auto " href="https://www.facebook.com/backpackstt/">
+                        <i class="fab fa-facebook-f fa-fw fa-lg  p-1"></i>
+                    </a>
+
+                    <!-- INSTAGRAM ICON -->
+
+                    <a class="nav-link my-auto" href="https://www.instagram.com/backpackstt/?hl=en">
+                        <i class="fab fa-instagram fa-fw fa-lg p-1"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% load static nav_links %}
+
+
+{% block content %}
+    {% get_nav_links as nav %}
+    {% for u, n in nav %}
+        <h1 class="text-center mb-2">
+            {% if u == request.path|cut:"/" %} {{ n }} {% endif %}
+        </h1>
+    {% endfor %}
+    {% if request.path == '/jansport/' %}
+        <div class="w-100 text-center mb-4 pb-1 bag-toggler" id="bag-toggler">
+            <div class="btn-group  mx-auto ">
+                {% get_sub_brands as sub %}
+                {% for a,b in sub %}
+                    <button class="btn bag-btn sub-brand-btn ash-text mx-0" id="{{ a }}">{{ b }}</button>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+    {% if request.path == '/other/' %}
+        <div class="w-100 text-center mb-1 pb-1 bag-toggler" id="brands-toggler">
+            <div class="btn-group  mx-auto ">
+                {% get_brands as brands %}
+                {% for a, b in brands %}
+                    <button class="btn bag-btn brand-btn ash-text mx-0" id="{{ a }}">{{ b }}</button>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="w-100 text-center mb-4 pb-1 bag-toggler" id="types-toggler">
+            <div class="btn-group  mx-auto ">
+                {% get_types as types %}
+                {% for a, b in types %}
+                    <button class="btn bag-btn type-btn ash-text mx-0"  id="{{ a }}">{{ b }}</button>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+    <div class="row">
+        {% for bag in bags %}
+            <div class="col-12 col-sm-4 col-md-3 bag-card " brand="{{ bag.get_brand_display }}"
+                 sub-brand="{{ bag.sub_brand }}" type="{{ bag.type }}">
+                <a class='no-decor text-dark' href="{{ bag.id }}">
+                    <div class="sm-card card mb-4">
+                        <!--brand="{{ bag.get_brand_display }}" sub-brand="{{ bag.sub_brand }}"-->
+                        <div class="img-center-vert wrapper">
+                            <img class="card-img-top card-img-sm " src="{{ bag.image.url }}">
+                        </div>
+                        <div class="card-body">
+                            <div class="card-title text">
+                                <h5 class="mb-0"
+                                    style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden">{{ bag.name }}</h5>
+                            </div>
+                            <div class="card-subtitle pb-0 pt-0 text">
+                                <h6>
+                                    {{ bag.get_brand_display }} {{ bag.get_sub_brand_display }}
+                                </h6>
+                            </div>
+                            <div class="card-text pb-0 pt-0 text">
+                                <p class="mb-0">TT ${{ bag.price }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

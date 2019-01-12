@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% include 'head.html' %}
+</head>
+
+<body>
+{% include 'nav.html' %}
+{% block top-nomargin %}
+{% endblock %}
+<div class="container mt-3">
+    <div class="card">
+        <div class="card-body">
+            {% block content %}
+            {% endblock %}
+
+        </div>
+
+    </div>
+</div>
+{% include 'footer.html' %}
+
+</body>
+
+</html>

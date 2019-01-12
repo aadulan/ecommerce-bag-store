@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="row  align-items-center">
+
+
+        <div class="col-sm-4">
+            <div class="img-center-vert sm-card ash-img ">
+                <img id="product-image" data-featherlight="#product-image" class="card-img-top" src="{{ bag.image.url }}">
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="card sm-card text-center">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h3>{{ bag.name }}</h3>
+                    </div>
+                    <div class="class-subtitle pb-1 pt-0">
+                        <h4>
+                            {{ bag.get_brand_display }} {{ bag.get_sub_brand_display }}
+                        </h4>
+                    </div>
+                    <div class="card-text">
+                        <p>{{ bag.description }}</p>
+                        <p>TT${{ bag.price }}</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+{% endblock %}

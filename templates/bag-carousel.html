@@ -1,0 +1,39 @@
+{% load static %}
+<div class="row">
+    <div class="owl-carousel owl-theme" id="bag-carousel" style="margin-top:20px;">
+
+        {% for bag in bags %}
+            {#        <div class="bag-card bg-ligh card-img">#}
+            {#            <div class="item"> <img class="d-block w-100" src={{ bag.image.url }} alt="First slide"> </div>#}
+            {#        </div>#}
+
+            <div class="item">
+                <div class="bag-card" brand="{{ bag.get_brand_display }}" sub-brand="{{ bag.sub_brand }}">
+                    <a class='no-decor text-dark' href="{{ bag.id }}">
+                        <div class="sm-card card mb-4">
+                            <!--brand="{{ bag.get_brand_display }}" sub-brand="{{ bag.sub_brand }}"-->
+                            <div class="img-center-vert wrapper">
+                                <img class="card-img-top card-img-sm " src="{{ bag.image.url }}">
+                            </div>
+                            <div class="card-body">
+                                <div class="card-title text">
+                                    <h5 class="mb-0"
+                                        style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden">{{ bag.name }}</h5>
+                                </div>
+                                <div class="card-subtitle pb-0 pt-0 text">
+                                    <h6>
+                                        {{ bag.get_brand_display }} {{ bag.get_sub_brand_display }}
+                                    </h6>
+                                </div>
+                                <div class="card-text pb-0 pt-0 text">
+                                    <p class="mb-0">TT ${{ bag.price }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>
+</div>
