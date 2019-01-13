@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.urls import include, path
-from products import views
+from products import views, forms
 from main import settings
 
 from products.views import brands, types
@@ -24,6 +24,8 @@ from products.views import brands, types
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
+    path('order/', views.get_order, name='get_order'),
+    path('order/order/', views.get_order, name='get_order'),  # fix me
     path('findus/', views.findus, name='findus'),
     path('accessories/', views.accessories, name='accessories'),
     path('other/',views.other_products, name='other_products'),
