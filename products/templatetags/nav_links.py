@@ -5,13 +5,13 @@ register = template.Library()
 @register.simple_tag
 def get_nav_links():
     links = [
+        # ('/bags','Bags'),
         ('jansport','Jansport'),
         ('sprayground','Sprayground'),
         ('accessories','Accessories'),
         ('luggage','Luggage'),
         ('other','Other Products'),
         ('findus','Find Us'),
-        # ('order', 'Order'),
 
     ]
     return links
