@@ -2,6 +2,7 @@ import random
 from django.shortcuts import render
 from django.db.models import Q
 from .models import Product
+from .forms import OrderForm
 
 brands = {
     'jansport': 'JS',
@@ -58,3 +59,7 @@ def get_product(request, cate, id):
 def get_product_index(request, id):
     bag = Product.objects.get(id=id)
     return render(request, 'product.html', {'bag': bag})
+
+def get_order(request):
+    form = OrderForm()
+    return render(request, 'order.html', {'form': form})
