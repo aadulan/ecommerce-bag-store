@@ -2,18 +2,19 @@ from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 from sorl.thumbnail import ImageField
 
-# Create your models here.
-
+# Product Model
 class Product(models.Model):
+    # Primary Key
     id = models.SlugField(
         max_length=15,
         unique=True,
         primary_key=True)
 
+    # name of bag
     name = models.CharField(
         max_length=150,
         db_index=True, blank=False)
-
+    # sub-brands for Jansport - Subject to change
     JANSPORT_CATEGORY = (
         ('big-student', 'Big Student'),
         ('black-label', 'Black Label'),
@@ -26,6 +27,7 @@ class Product(models.Model):
         ('bento-box','Bento Box')
     )
 
+    # brands for products - subject to change 
     BRAND_CHOICES = (
         ('JS', 'Jansport'),
         ('SL', 'Slazenger'),
